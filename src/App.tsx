@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useAppDispatch, useAppSelector } from "./store";
 import { countAction } from "./store/countReducer";
+import Header from "./components/header";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <button className="mr-10" onClick={increase}>
         increase
       </button>
