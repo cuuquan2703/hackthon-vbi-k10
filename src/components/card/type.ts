@@ -4,4 +4,5 @@ export interface cardProps {
   des: string;
   expAt: Date;
   uri: string;
+  price: number;
 }

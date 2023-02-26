@@ -4,6 +4,10 @@ import "./App.css";
 import { useAppDispatch, useAppSelector } from "./store";
 import { countAction } from "./store/countReducer";
 import Header from "./components/header";
+import Card from "./components/card";
+import HomePage from "./page/homepage";
+import View from "./page/view";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -16,14 +20,14 @@ function App() {
     dispatch(countAction.decrease());
   };
 
+  const date: Date = new Date();
+
   return (
     <>
-      <Header />
-      <button className="mr-10" onClick={increase}>
-        increase
-      </button>
-      <button onClick={decrease}>decrease</button>
-      <div className="text-5xl text-black underline">{count}</div>
+      <Routes>
+        <Route path="market" element={<HomePage />} />
+        <Route path="/view" element={<View />} />
+      </Routes>
     </>
   );
 }

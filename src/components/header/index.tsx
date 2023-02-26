@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SearchBar from "../searchBar";
 
 const Header = () => {
@@ -32,7 +33,7 @@ const Header = () => {
             fill-opacity="0.8"
           />
         </svg>
-        <p>Market</p>
+        <Link to="/market">Market</Link>
       </li>
       <li className="list-none flex font-roboto-slab text-2xl text-lightGray/40 font-bold items-center gap-x-1 hover:text-lightGray hover:cursor-pointer">
         <svg
@@ -60,7 +61,7 @@ const Header = () => {
             stroke-linecap="round"
           />
         </svg>
-        <p>Upload</p>
+        <Link to="/upload">Upload</Link>
       </li>
       <SearchBar />
       <button className="h-[2rem] bg-caribbean rounded-[3.125rem] w-[10rem] font-roboto-slab text-xl font-normal">
