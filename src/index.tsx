@@ -5,7 +5,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./store";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import HomePage from "./page/homepage";
+import View from "./page/view";
+import Upload from "./page/upload";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,7 +17,14 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <Routes>
+          <Route path="/" element={<Navigate to="/market" replace />} />
+          <Route path="/" element={<App />}>
+            <Route path="/market" element={<HomePage />} />
+            <Route path="view/:tokenId" element={<View />} />
+            <Route path="/upload" element={<Upload />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

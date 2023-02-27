@@ -7,7 +7,7 @@ import Header from "./components/header";
 import Card from "./components/card";
 import HomePage from "./page/homepage";
 import View from "./page/view";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -24,10 +24,8 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route path="market" element={<HomePage />} />
-        <Route path="/view" element={<View />} />
-      </Routes>
+      <Header />
+      <Outlet />
     </>
   );
 }

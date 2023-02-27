@@ -1,11 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import SearchBar from "../searchBar";
 
 const Header = () => {
+  const param = useLocation();
+  console.log(param);
   return (
     <div className="flex justify-between gap-x-20 my-[3rem] px-[3rem]">
-      <li className="list-none  flex font-roboto-slab text-2xl text-lightGray/40 font-bold items-center gap-x-1 hover:text-lightGray hover:cursor-pointer">
+      <li
+        className={`list-none  flex font-roboto-slab text-2xl ${
+          param.pathname == "/market" ? "text-lightGray" : "text-lightGray/40"
+        } font-bold items-center gap-x-1 hover:text-lightGray hover:cursor-pointer`}
+      >
         <svg
           width="28"
           height="28"
@@ -35,7 +41,11 @@ const Header = () => {
         </svg>
         <Link to="/market">Market</Link>
       </li>
-      <li className="list-none flex font-roboto-slab text-2xl text-lightGray/40 font-bold items-center gap-x-1 hover:text-lightGray hover:cursor-pointer">
+      <li
+        className={`list-none flex font-roboto-slab text-2xl           ${
+          param.pathname == "/upload" ? "text-lightGray" : "text-lightGray/40"
+        } font-bold items-center gap-x-1 hover:text-lightGray hover:cursor-pointer`}
+      >
         <svg
           width="28"
           height="28"

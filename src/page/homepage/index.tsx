@@ -5,7 +5,7 @@ import Layout from "../../layout";
 const HomePage = () => {
   const date = new Date();
   return (
-    <Layout>
+    <>
       <p className="w-full flex justify-center mb-16 font-roboto-slab text-5xl mb-2 font-bold text-[#d2d2d2]">
         MARKET
       </p>
@@ -58,7 +58,7 @@ const HomePage = () => {
           />
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 export default HomePage;

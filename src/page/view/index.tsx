@@ -1,16 +1,19 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import Card from "../../components/card";
 import Layout from "../../layout";
 import { viewsPageProps } from "./type";
 
 const View = () => {
   const date = new Date();
+  const param = useParams();
+  console.log(param.tokenId);
   return (
-    <Layout>
-      <p className="w-full px-48 flex justify-begin mb-12 font-roboto-slab text-5xl font-bold text-[#d2d2d2]">
+    <>
+      <p className="w-full px-20 flex justify-begin mb-12 font-roboto-slab text-5xl font-bold text-[#d2d2d2]">
         NAME
       </p>
-      <div className="w-full flex justify-center px-48">
+      <div className="w-full flex justify-center px-20">
         <div className="flex gap-24">
           <Card
             ownerId="cquan.testnet"
@@ -21,7 +24,7 @@ const View = () => {
             uri="aaaa"
           />
           <div>
-            <div className="w-[80%] mb-8">
+            <div className="w-[60%] mb-8">
               <p className="font-roboto-slab font-bold text-3xl text-lightGray">
                 Title
               </p>
@@ -60,7 +63,7 @@ const View = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 export default View;
