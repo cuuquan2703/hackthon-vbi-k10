@@ -8,6 +8,9 @@ import Card from "./components/card";
 import HomePage from "./page/homepage";
 import View from "./page/view";
 import { Outlet, Route, Routes } from "react-router-dom";
+import * as buffer from "buffer";
+
+window.Buffer = buffer.Buffer;
 
 function App() {
   const dispatch = useAppDispatch();

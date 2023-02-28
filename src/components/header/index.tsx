@@ -1,10 +1,35 @@
-import React from "react";
+import { keyStores } from "near-api-js";
+import { connect } from "near-api-js/lib/connect";
+import { WalletConnection } from "near-api-js/lib/wallet-account";
+import React, { useEffect } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import SearchBar from "../searchBar";
 
+declare const window: any;
+
+const initContract = async () => {
+  const keyStore = new keyStores.BrowserLocalStorageKeyStore();
+  const connection = await connect({
+    networkId: "testnet",
+    keyStore: keyStore,
+    nodeUrl: "https://rpc.testnet.near.org",
+    walletUrl: "https://wallet.testnet.near.org",
+    helperUrl: "https://helper.testnet.near.org",
+  });
+
+  window.walletConnection = new WalletConnection(connection, null);
+  console.log(window.walletConnection);
+};
+
 const Header = () => {
   const param = useLocation();
+
   console.log(param);
+
+  useEffect(() => {
+    initContract();
+  }, []);
+
   return (
     <div className="flex justify-between gap-x-20 my-[3rem] px-[3rem]">
       <li
@@ -74,7 +99,14 @@ const Header = () => {
         <Link to="/upload">Upload</Link>
       </li>
       <SearchBar />
-      <button className="h-[2rem] bg-caribbean rounded-[3.125rem] w-[10rem] font-roboto-slab text-xl font-normal">
+      <button
+        onClick={() =>
+          window.walletConnection.requestSignIn({
+            contractId: "market_contract.flyingtung.testnet",
+          })
+        }
+        className="h-[2rem] bg-caribbean rounded-[3.125rem] w-[10rem] font-roboto-slab text-xl font-normal"
+      >
         Connect
       </button>
     </div>
