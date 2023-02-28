@@ -8,9 +8,11 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/exports";
 import { TypedUseSelectorHook } from "react-redux/es/types";
 import { countReducer, COUNT_REDUCER } from "./countReducer";
+import { userReducer, USER_REDUCER } from "./userReducer";
 
 export const rootReducer = combineReducers({
   [COUNT_REDUCER]: countReducer,
+  [USER_REDUCER]: userReducer,
 });
 
 const store = configureStore({
