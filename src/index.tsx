@@ -9,6 +9,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "./page/homepage";
 import View from "./page/view";
 import Upload from "./page/upload";
+import User from "./page/user";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -23,6 +24,7 @@ root.render(
             <Route path="/market" element={<HomePage />} />
             <Route path="view/:tokenId" element={<View />} />
             <Route path="/upload" element={<Upload />} />
+            <Route path="/user" element={<User />} />
           </Route>
         </Routes>
       </BrowserRouter>

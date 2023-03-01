@@ -6,53 +6,16 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { CONTRACT_NAME, MARKET_CONTRACT_NAME } from "../../config";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { userAction } from "../../store/userReducer";
+import { walletAction } from "../../store/walletReducer";
 import SearchBar from "../searchBar";
 
-declare const window: any;
+// declare const window: any;
 
 const Header = () => {
   const param = useLocation();
-  const dispatch = useAppDispatch();
+
   const accountId = useAppSelector((state) => state.user.accountId);
   const isLoggedIn = useAppSelector((state) => state.user.logged);
-
-  const initContract = async () => {
-    const keyStore = new keyStores.BrowserLocalStorageKeyStore();
-    const connection = await connect({
-      networkId: "testnet",
-      keyStore: keyStore,
-      nodeUrl: "https://rpc.testnet.near.org",
-      walletUrl: "https://wallet.testnet.near.org",
-      helperUrl: "https://helper.testnet.near.org",
-    });
-
-    window.walletConnection = new WalletConnection(connection, null);
-    const account = window.walletConnection.account();
-
-    window.marketContract = new Contract(account, MARKET_CONTRACT_NAME, {
-      viewMethods: ["storage_minimum_balance"],
-      changeMethods: [],
-    });
-    window.nftContract = new Contract(account, CONTRACT_NAME, {
-      viewMethods: [],
-      changeMethods: [],
-    });
-
-    let info = await window.marketContract.storage_minimum_balance();
-    console.log(info);
-
-    if (window.walletConnection.isSignedIn()) {
-      dispatch(userAction.setLogged());
-      dispatch(userAction.setAccountId(window.walletConnection.getAccountId()));
-    }
-    console.log(accountId);
-  };
-
-  console.log(param);
-
-  useEffect(() => {
-    initContract();
-  }, []);
 
   return (
     <div className="flex justify-between gap-x-20 my-[3rem] px-[3rem]">
@@ -128,7 +91,7 @@ const Header = () => {
           <li
             className={`list-none flex text-lightGray font-roboto-slab text-2xl font-bold items-center gap-x-1 hover:text-lightGray hover:cursor-pointer `}
           >
-            {accountId}
+            <Link to="/user">{accountId}</Link>
           </li>
         </div>
       ) : (

@@ -8,16 +8,16 @@ const Card = (props: cardProps) => {
   return (
     <div className="w-[15rem] h-[23rem] rounded-[1.25rem] p-0 border-solid border-[0.2rem] border-[#1c82ad]">
       <img
-        src="/test/R.jpg"
+        src={uri}
         className="w-full h-[70%] object-cover overflow-hidden rounded-t-[1.1rem]"
       />
       <p className="font-roboto-slab text-sm font-normal text-[#d2d2d2]/60 px-[1rem] mt-1">
         {ownerId}
       </p>
 
-      <p className="font-roboto-slab text-2xl mb-2 font-normal text-[#d2d2d2] px-[1rem]">
+      <li className="list-none truncate font-roboto-slab text-2xl mb-2 font-normal text-[#d2d2d2] px-[1rem]">
         {title}
-      </p>
+      </li>
       <p className="font-roboto-slab text-lg font-normal text-[#d2d2d2]/60 px-[1rem]">
         {price} NEAR
       </p>
