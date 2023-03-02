@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getTextOfJSDocComment } from "typescript";
 import Card from "../../components/card";
-import { MARKET_CONTRACT_NAME } from "../../config";
+import { CONTRACT_NAME, MARKET_CONTRACT_NAME } from "../../config";
 import Layout from "../../layout";
 import { useAppDispatch, useAppSelector } from "../../store";
 
@@ -50,7 +50,7 @@ const User = () => {
     console.log(token_id);
     sendStorageDeposit();
     let sale_conditions = {
-      sale_conditions: 0.25,
+      sale_conditions: "0.25",
     };
     await nftContract.nft_approve(
       {
